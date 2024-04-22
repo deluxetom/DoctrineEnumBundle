@@ -51,7 +51,7 @@ abstract class AbstractEnumType extends Type
      *
      * @return TValue|int|string
      */
-    public function convertToDatabaseValue($value, AbstractPlatform $platform)
+    public function convertToDatabaseValue(mixed $value, AbstractPlatform $platform)
     {
         if (null !== $value && !isset(static::$choices[$value])) {
             throw new InvalidArgumentException(\sprintf('Invalid value "%s" for ENUM "%s".', $value, $this->getName()));
@@ -66,7 +66,7 @@ abstract class AbstractEnumType extends Type
      *
      * @return TValue
      */
-    public function convertToPHPValue($value, AbstractPlatform $platform)
+    public function convertToPHPValue(mixed $value, AbstractPlatform $platform)
     {
         if (!isset(static::$choices[$value])) {
             return $value;
